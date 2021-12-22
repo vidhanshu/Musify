@@ -262,18 +262,97 @@
                 height: 480px;
             }
         }
+        
+        a {
+            transition: .3s;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .download-button {
+            width: 120px;
+            margin: auto;
+            padding: 5px;
+            font-size: 15px;
+            border-radius: 5px;
+            background-color: rgb(0, 185, 77);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .download-button:hover {
+            background-color: rgb(0, 230, 96);
+            box-shadow: 0px 0px 20px rgb(0, 230, 96);
+        }
+        
+        .full-size-nav-menu {
+            right: 0;
+            overflow: hidden;
+            transition: .2s;
+            position: relative;
+            width: 0vw;
+            z-index: 100;
+            position: fixed;
+            background-color: rgb(51, 51, 51);
+            height: 100vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .full-size-nav-menu i {
+            top: 14px;
+            right: 30px;
+            cursor: pointer;
+            position: absolute;
+            color: white;
+            font-size: 30px;
+        }
+        
+        .full-size-nav-menu li a:hover {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .full-size-nav-menu ul {
+            height: 200px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .fa-bars {
+            cursor: pointer;
+            font-size: 25px;
+            margin: 0px 30px 0px 0px;
+            color: white;
+        }
+        
+        .full-size-nav-menu li {
+            list-style: none;
+            transition: .3s;
+        }
     </style>
 </head>
 
 <body>
+    <div class="full-size-nav-menu">
+        <i class="fas fa-times close"></i>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Contact</a></li>
+            <li title="Download the song"><a class="download-button" href="" download="">Download Now</a>
+            </li>
+        </ul>
+    </div>
     <header>
         <nav>
             <h1><i class="fab fa-spotify"></i> Musify</h1>
-            <ul>
-                <li>Home</li>
-                <li>Contact us</li>
-                <li>Help</li>
-            </ul>
+            <div class="nav-button">
+                <i class="open fas fa-bars"></i>
+            </div>
         </nav>
     </header>
     <div class="body">
@@ -321,6 +400,8 @@
     </footer>
 
     <script>
+        var curr = 0;
+
         const musicApi = [{
             img: "OIP.jpg",
             name: "arijit jukebox song",
@@ -355,9 +436,15 @@
         const playbackTitle = document.querySelector(".playback-title");
         const playbackSeeker = document.querySelector(".playback-seeker");
         const animation = document.querySelector(".animations");
+        const Download = document.querySelector(".download-button");
+        const menuPage = document.querySelector(".full-size-nav-menu");
+        const menuPageClose = document.querySelector(".close");
+        const menuPageOpen = document.querySelector(".open");
 
         window.onload = function() {
             title.innerHTML = musicApi[curr].name;
+            Download.setAttribute('href', musicApi[curr].src.src);
+            Download.setAttribute('download', musicApi[curr].name);
         }
 
         volumeSeeker.addEventListener('change', (e) => {
@@ -375,9 +462,16 @@
             musicApi[curr].src.currentTime = seek.value;
         })
 
-        var curr = 0;
+
+        menuPageClose.addEventListener('click', () => {
+            menuPage.style.width = "0"
+        })
+        menuPageOpen.addEventListener('click', () => {
+            menuPage.style.width = "100vw";
+        })
 
         const play = () => {
+
             image.style.animation = "rotate 6s linear infinite";
 
             animation.style.display = "flex";
@@ -439,20 +533,34 @@
 
 
         const left = () => { //left song
+
+            curr = (curr == 0) ? musicApi.length - 1 : curr - 1;
+
+            title.innerHTML = musicApi[curr].name;
+            Download.setAttribute('href', musicApi[curr].src.src);
+            Download.setAttribute('download', musicApi[curr].name);
+
+
             musicApi.map(e => { //turning off all other songs
                 e.src.pause();
                 e.src.currentTime = 0; //setting their current time to 0 since they were starting from the last current time state
             })
-            curr = (curr == 0) ? musicApi.length - 1 : curr - 1;
             play();
         }
 
         const right = () => { //right song 
+
+            curr = (curr == musicApi.length - 1) ? 0 : curr + 1;
+
+            title.innerHTML = musicApi[curr].name;
+            Download.setAttribute('href', musicApi[curr].src.src);
+            Download.setAttribute('download', musicApi[curr].name);
+
+
             musicApi.map(e => { //turning off all other songs
                 e.src.pause();
                 e.src.currentTime = 0; //setting their current time to 0 since they were starting from the last current time state
             })
-            curr = (curr == musicApi.length - 1) ? 0 : curr + 1;
             play();
         }
 
