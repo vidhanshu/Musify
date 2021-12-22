@@ -81,22 +81,25 @@
         
         button {
             font-size: 20px;
-            width: 60px;
-            border-radius: 3px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             padding: 3px;
             background-color: rgb(0, 132, 255);
             border: none;
             color: white;
-            transition: transform ease-in .5s;
+            transition: transform ease-in 1s;
         }
         
         button:hover {
             cursor: pointer;
-            transform: scale(1.1);
+            outline-offset: 1px;
+            outline: 2px solid rgb(107, 159, 255);
             background-color: rgb(92, 176, 255);
         }
         
         .seek {
+            height: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -105,8 +108,24 @@
         .seek input,
         .volume input,
         .Playback input {
+            height: 3px;
             cursor: pointer;
             width: 100%;
+        }
+        
+        input[type='range'] {
+            -webkit-appearance: none !important;
+            background: rgb(255, 255, 255);
+            height: 3px;
+            border-radius: 5px;
+        }
+        
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none !important;
+            background: rgb(125, 125, 255);
+            height: 10px;
+            width: 10px;
+            border-radius: 10px;
         }
         
         .duration {
@@ -367,7 +386,7 @@
         </div>
         <div class="container">
             <figure class="image-box">
-                <img class="img" width="100%" src="OIP.jpg">
+                <img class="img" width="100%" src="https://th.bing.com/th/id/OIP.HQlGVIUvQfr_7y7q9mD5UAHaHa?pid=ImgDet&rs=1">
             </figure>
             <div class="duration">
                 <h4>00:00 / 00:00</h4>
@@ -403,7 +422,7 @@
         var curr = 0;
 
         const musicApi = [{
-            img: "https://i.postimg.cc/8Pfg506K/OIP.jpg",
+            img: "https://th.bing.com/th/id/OIP.HQlGVIUvQfr_7y7q9mD5UAHaHa?pid=ImgDet&rs=1",
             name: "arijit jukebox song",
             src: new Audio("arijit.mp3")
         }, {
