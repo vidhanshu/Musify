@@ -9,7 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musics</title>
+    <title>Musify</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/7Ywcbvc8/Vector-1.png">
+    <link rel="manifest" href="/site.webmanifest">
     <style>
         * {
             margin: 0;
@@ -229,14 +231,15 @@
             box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.5);
         }
         
-        header nav h1 {
-            color: white;
-            padding: 0px 20px;
-            width: 50%;
-            cursor: pointer;
+        header nav img {
+            display: inline;
         }
         
-        header nav ul {
+        header nav h1 {
+            display: inline;
+        }
+        
+        di header nav ul {
             width: 50%;
             display: flex;
             justify-content: space-evenly;
@@ -251,8 +254,8 @@
             transition: .4s;
         }
         
-        .fa-spotify {
-            color: rgb(0, 219, 0);
+        .logo {
+            margin: 0px 5px;
         }
         
         header nav ul li:hover {
@@ -380,7 +383,7 @@
     </div>
     <header>
         <nav>
-            <h1><i class="fab fa-spotify"></i> Musify</h1>
+            <img class="logo" width="100px" src="https://i.postimg.cc/XN5SrSgQ/logo.png">
             <div class="nav-button">
                 <i class="open fas fa-bars"></i>
             </div>
