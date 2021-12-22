@@ -45,7 +45,6 @@
         
         figure {
             width: 100%;
-            overflow: hidden;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
@@ -58,9 +57,13 @@
             border-radius: 50%;
             width: 200px;
             height: 200px;
-            transition: transform 1s;
+            transition: .4s;
             cursor: pointer;
             animation: none;
+        }
+        
+        figure img:hover {
+            box-shadow: 0px 0px 100px 10px rgb(236, 158, 255);
         }
         
         @keyframes rotate {
@@ -88,13 +91,15 @@
             background-color: rgb(0, 132, 255);
             border: none;
             color: white;
-            transition: transform ease-in 1s;
+            transition: .4s;
+            outline-offset: -1px;
         }
         
         button:hover {
             cursor: pointer;
             outline-offset: 1px;
-            outline: 2px solid rgb(107, 159, 255);
+            outline: 3px solid rgb(167, 198, 255);
+            box-shadow: 0px 0px 20px rgb(149, 230, 255);
             background-color: rgb(92, 176, 255);
         }
         
@@ -116,16 +121,23 @@
         input[type='range'] {
             -webkit-appearance: none !important;
             background: rgb(255, 255, 255);
-            height: 3px;
+            height: 4px;
             border-radius: 5px;
         }
         
         input[type='range']::-webkit-slider-thumb {
             -webkit-appearance: none !important;
-            background: rgb(125, 125, 255);
-            height: 10px;
-            width: 10px;
+            background: rgb(255, 0, 221);
+            height: 15px;
+            width: 15px;
             border-radius: 10px;
+            transition: .4s;
+        }
+        
+        input[type='range']::-webkit-slider-thumb:hover {
+            outline-offset: 0px;
+            box-shadow: 0px 0px 30px 10px rgb(253, 135, 243);
+            outline: 3px solid rgb(255, 208, 251);
         }
         
         .duration {
