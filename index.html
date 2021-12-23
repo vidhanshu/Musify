@@ -368,13 +368,61 @@
             list-style: none;
             transition: .3s;
         }
+        
+        .favourite {
+            position: absolute;
+            top: 10px;
+            left: 10;
+            color: white;
+        }
+        
+        .favourite i {
+            font-size: 25px;
+        }
+        
+        .favourite-songs {
+            width: 100vw;
+            height: 90vh;
+            backdrop-filter: blur(20px);
+            z-index: 20;
+            position: fixed;
+            top: 9.9vh;
+        }
+        
+        .fav-song-list {
+            height: 80%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .fav-song-list li {
+            color: white;
+            list-style: none;
+        }
+        
+        .band-kar {
+            position: absolute;
+            right: 30px;
+            top: 10px;
+            color: white;
+            font-size: 30px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="favourite-songs" style="display:none">
+        <i class="fas fa-times band-kar"></i>
+        <ul class="fav-song-list">
+
+        </ul>
+    </div>
     <div class="full-size-nav-menu">
         <i class="fas fa-times close"></i>
         <ul>
+            <li onClick="favouriteSongs()"><a>Favourite songs</a></li>
             <li><a href="/">Home</a></li>
             <li><a href="/">Contact</a></li>
             <li title="Download the song"><a class="download-button" href="" download="">Download Now</a>
@@ -400,6 +448,10 @@
             <img width="30px" src="R.png" alt="" class="img7">
         </div>
         <div class="container">
+            <div class="favourite">
+                <i id="fav" onclick="fav(this)" class="fa fa-star-o" aria-hidden="true">
+                    </i>
+            </div>
             <figure class="image-box">
                 <img class="img" width="100%" src="https://th.bing.com/th/id/OIP.HQlGVIUvQfr_7y7q9mD5UAHaHa?pid=ImgDet&rs=1">
             </figure>
@@ -456,6 +508,62 @@
             img: "https://i.postimg.cc/sDr4QBBk/B-Praak.jpg",
             name: "B prak jukebox album romantic",
             src: new Audio("Bprak.mp3")
+        }, {
+            img: "https://th.bing.com/th/id/OIP.M2VW1xDBm17taERG1r0NQwHaG3?pid=ImgDet&rs=1",
+            name: "Khamonshiyan-arijit",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2320961/01-Khamoshiyan-Khamoshiyan-192-kbps-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://th.bing.com/th/id/OIP.zlSlLhE4MyxfAc5DiTML8wHaJT?pid=ImgDet&rs=1",
+            name: "Wafa na ras ayi - jubin nautiyal",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2335242/Wafa-Na-Raas-Aayee-Song-Jubin-Nautiyal-Ft-Himansh-K-2CArushi-N-2C-Meet-Bros-Rashmi-V-Ashish-P-Bhushan-K-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://cdn.siasat.com/wp-content/uploads/2020/04/Jubin-nautiyal-.jpg",
+            name: "Meri jindgai hai tu - jubin",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2354861/Meri-Zindagi-Hai-Tu-Song-Satyameva-Jayate-2-John-A-Divya-K-Rochak-ft-Jubin-Neeti-Manoj-M-1-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://www.newsbugz.com/wp-content/uploads/2018/08/Jubin-Nautiyal-Images-2-700x875.jpg",
+            name: "Barsat ki dhun - jubin nautiyal",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2335240/Barsaat-Ki-Dhun-Song-Rochak-K-Ft-Jubin-N-Gurmeet-C-2C-Karishma-S-Rashmi-V-Ashish-P-Bhushan-K-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://www.newsbugz.com/wp-content/uploads/2018/08/Jubin-Nautiyal-Images-2-700x875.jpg",
+            name: "Suna Hai Tere Dil Pe Mera - jubin nautiyal",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2335236/Suna-Hai-Tere-Dil-Pe-Mera-Full-Song-Jubin-Nautiyal-Suna-Hai-Tere-Dil-Pe-Mera-Kahi-Na-Kahi-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://th.bing.com/th/id/OIP.IRFMYp26UWNXkqHLW3V-dwHaEK?pid=ImgDet&rs=1",
+            name: "Sanam teri kasam - Mohammed Irfan & Palak Muchhal",
+            src: new Audio("https://pwdown.com/113394/09.%20Sanam%20Teri%20Kasam%20(Reprise)%20-%20Mohammed%20Irfan%20&%20Palak%20Muchhal.mp3")
+        }, {
+            img: "https://www.newsbugz.com/wp-content/uploads/2018/08/Jubin-Nautiyal-Images-1-700x701.jpg",
+            name: "Hummava mere - jubin nautiyal",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2335234/Humnava-Mere-Song-Jubin-Nautiyal-Manoj-Muntashir-Rocky-Shiv-Bhushan-Kumar-Humnava-mere-F0-9F-94-A5-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://i2.cinestaan.com/image-bank/1500-1500/155001-156000/155863.jpg",
+            name: "Chitthi Pate pe aye na - jubin nautiyal",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2335232/Chitthi-Lyrics-Full-video-teri-chithhi-pate-pe-aaye-na-Jubin-Nautiyal-akansha-puri-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://i.scdn.co/image/98961bdd69353c5257d64acee37451987f26fbb1",
+            name: "Dil galti kar baitha hai - jubin nautiyal",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2335233/Dil-galti-kar-baitha-hai-Ft-jubain-nautiyal-mouni-roy-New-song-Jubain-nautiyal-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://www.dailyexcelsior.com/wp-content/uploads/2021/04/JUBIN.jpg",
+            name: "Bewafa Tera Muskurana - jubin nautiyal",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2335230/Bewafa-Tera-Muskurana-Official-Song-ft-Jubain-Nautiyal-Himansh-Kohli-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://th.bing.com/th/id/OIP.lCZjFLks6W0Lhj8AH6q5VgHaEK?pid=ImgDet&rs=1",
+            name: "Lut gaye - jubin nautiyal",
+            src: new Audio("http://pagalworld4g.ml/filedownload/2335166/Lut-Gaye-Full-Song-Emraan-Hashmi-2C-Yukti-Jubin-N-2C-Tanishk-B-2C-Manoj-M-Bhushan-K-Radhika-Vinay-(pagalworld4g.ml).mp3")
+        }, {
+            img: "https://stat1.bollywoodhungama.in/wp-content/uploads/2021/03/Tadap-1.jpg",
+            name: "Tumse Bhi Zyada - Tadap - Arijit Singh, Pritam",
+            src: new Audio("https://pwdown.com/113582/variation/190K/Tumse%20Bhi%20Zyada%20-%20Tadap.mp3")
+        }, {
+            img: "https://th.bing.com/th/id/R.f4b7eb98c92c92c7647e65076d90966d?rik=ZXA3b%2bzHPtoYcw&riu=http%3a%2f%2fp2.music.126.net%2fI71Lp23iGZ7FH9SwGzMYuw%3d%3d%2f109951166712030399.jpg&ehk=HIm5d7upNr9j9F%2flGKa0IWJW6aDQdaAx7uxoaKRABcw%3d&risl=&pid=ImgRaw&r=0",
+            name: "Tu Mera Hogaya Hai - Tadap - Jubin Nautiyal, Pritam",
+            src: new Audio("https://pwdown.com/113582/variation/190K/Tu%20Mera%20Hogaya%20Hai%20-%20Tadap.mp3")
+        }, {
+            img: "https://i.ytimg.com/vi/1rotaNHEzzU/maxresdefault.jpg",
+            name: " Tere Siva Jag Mein Cafe Edit - Tadap - Darshan Raval, Pritam",
+            src: new Audio("https://pwdown.com/113582/variation/190K/Tere%20Siva%20Jag%20Mein%20Cafe%20Edit%20-%20Tadap.mp3")
         }]
 
         const playButton = document.querySelector(".play");
@@ -474,8 +582,30 @@
         const menuPage = document.querySelector(".full-size-nav-menu");
         const menuPageClose = document.querySelector(".close");
         const menuPageOpen = document.querySelector(".open");
+        const favourite = document.querySelector("#fav");
+        const favouriteSongList = document.querySelector(".fav-song-list");
+        const blurFav = document.querySelector('.favourite-songs');
+
+
+
+
+
 
         window.onload = function() {
+            if (localStorage.getItem(musicApi[curr].name) === "fav") {
+                console.log("yes");
+                favourite.style.color = "yellow";
+                favourite.classList.replace("fa", "fas");
+                favourite.classList.replace("fa-star-o", "fa-star");
+                favourite.title = "Added to favourite";
+            } else {
+                favourite.style.color = "white";
+                favourite.classList.replace("fas", "fa");
+                favourite.classList.replace("fa-star", "fa-star-o");
+                favourite.title = "Add to favourite";
+                console.log("No");
+            }
+
             title.innerHTML = musicApi[curr].name;
             Download.setAttribute('href', musicApi[curr].src.src);
             Download.setAttribute('download', musicApi[curr].name);
@@ -504,7 +634,52 @@
             menuPage.style.width = "100vw";
         })
 
+        const fav = (elm) => {
+            if (elm.className === "fa fa-star-o") {
+                elm.style.color = "yellow";
+                elm.classList.replace("fa", "fas");
+                elm.classList.replace("fa-star-o", "fa-star");
+                elm.title = "Added to favourite";
+                localStorage.setItem(musicApi[curr].name, "fav")
+            } else {
+                favourite.title = "Add to favourite";
+                elm.style.color = "white";
+                elm.classList.replace("fas", "fa");
+                elm.classList.replace("fa-star", "fa-star-o");
+                localStorage.setItem(musicApi[curr].name, "unFav")
+            }
+        }
+
+        const favouriteSongs = () => {
+            if (blurFav.style.display === "none") {
+                blurFav.style.display = "block";
+                var txt = '';
+                for (let i = 0; i < musicApi.length; i++) {
+                    if (localStorage.getItem(musicApi[i].name) == "fav") {
+                        txt += `<li>${musicApi[i].name}</li>`;
+                    }
+                }
+                favouriteSongList.innerHTML = (txt.length) ? txt : "<li>Not Available</li>";
+            } else {
+                blurFav.style.display = "none";
+            }
+        }
+
+        document.querySelector(".band-kar").addEventListener('click', favouriteSongs);
+
         const play = () => {
+
+            if (localStorage.getItem(musicApi[curr].name) === "fav") {
+                favourite.title = "Added to favourite";
+                favourite.style.color = "yellow";
+                favourite.classList.replace("fa", "fas");
+                favourite.classList.replace("fa-star-o", "fa-star");
+            } else {
+                favourite.title = "Add to favourite";
+                favourite.style.color = "white";
+                favourite.classList.replace("fas", "fa");
+                favourite.classList.replace("fa-star", "fa-star-o");
+            }
 
             image.style.animation = "rotate 6s linear infinite";
 
@@ -567,7 +742,6 @@
 
 
         const left = () => { //left song
-
             curr = (curr == 0) ? musicApi.length - 1 : curr - 1;
 
             title.innerHTML = musicApi[curr].name;
@@ -583,7 +757,6 @@
         }
 
         const right = () => { //right song 
-
             curr = (curr == musicApi.length - 1) ? 0 : curr + 1;
 
             title.innerHTML = musicApi[curr].name;
@@ -607,5 +780,7 @@
         })
     </script>
 </body>
+
+</html>
 
 </html>
