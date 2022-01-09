@@ -584,7 +584,6 @@
 
         window.onload = function() {
             if (localStorage.getItem(musicApi[curr].name) === "fav") {
-                console.log("yes");
                 favourite.style.color = "yellow";
                 favourite.classList.replace("fa", "fas");
                 favourite.classList.replace("fa-star-o", "fa-star");
@@ -594,7 +593,6 @@
                 favourite.classList.replace("fas", "fa");
                 favourite.classList.replace("fa-star", "fa-star-o");
                 favourite.title = "Add to favourite";
-                console.log("No");
             }
 
             title.innerHTML = musicApi[curr].name;
@@ -682,6 +680,9 @@
 
             musicApi[curr].src.play();
 
+            // musicApi[curr].src.oncanplaythrough = () => {
+            // } tells if full audio can be play ior not
+
             musicApi[curr].src.volume = volumeSeeker.value; //to set the volume whatever we had set on previous song
 
             image.src = musicApi[curr].img; //to set the image
@@ -711,7 +712,6 @@
                 durationSeconds
                 exactTime = (`${currentMinute}:${currentSeconds}/${durationMinute}:${durationSeconds}`);
                 timer.innerHTML = (exactTime === '00:00/NaN:NaN') ? "wait" : exactTime;
-                console.log(exactTime);
                 if (currentTime === durationOfSong) {
                     right();
                 }
